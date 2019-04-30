@@ -1805,6 +1805,9 @@ export var tns = function(options) {
     addClass(img, 'tns-complete');
     removeClass(img, 'loading');
     removeEvents(img, imgEvents);
+    //mattun
+    if (autoHeight) { updateInnerWrapperHeight(); }
+    //mattun-end
   }
 
   function getImageArray (start, end) {
