@@ -2222,6 +2222,14 @@ var tns = function(options) {
           if (srcset) { img.srcset = srcset; }
 
           addClass(img, 'loading');
+
+          //mattun fix safari issue.
+          // If image is cached, trigger 'load' event
+          if (img.complete) {
+            var event = new Event('load');
+            img.dispatchEvent(event);
+          }
+          //mattun-end
           }
       });
     }
@@ -2269,11 +2277,11 @@ var tns = function(options) {
   }
 
   function imgsLoadedCheck (imgs, cb) {
-    //mattun
-    console.log("imgsLoadedCheck triggerd");
-    //mattun-end
+        //mattun
+        console.log("imgsLoadedCheck triggered");
+        //mattun-end
 
-    // directly execute callback function if all images are complete
+        // directly execute callback function if all images are complete
     if (imgsComplete) { return cb(); }
 
     // check selected image classes otherwise
