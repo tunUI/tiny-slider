@@ -2222,14 +2222,6 @@ var tns = function(options) {
           if (srcset) { img.srcset = srcset; }
 
           addClass(img, 'loading');
-
-          //mattun fix safari issue.
-          // If image is cached, trigger 'load' event
-          if (img.complete) {
-            var event = new Event('load');
-            img.dispatchEvent(event);
-          }
-          //mattun-end
           }
       });
     }
@@ -2257,9 +2249,6 @@ var tns = function(options) {
     addClass(img, 'tns-complete');
     removeClass(img, 'loading');
     removeEvents(img, imgEvents);
-    //mattun
-    if (autoHeight) { updateInnerWrapperHeight(); }
-    //mattun-end
   }
 
   function getImageArray (start, end) {
