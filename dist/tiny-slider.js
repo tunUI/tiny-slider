@@ -2280,9 +2280,6 @@ var tns = function(options) {
   }
 
   function imgsLoadedCheck (imgs, cb) {
-        //mattun
-        console.log("imgsLoadedCheck triggered");
-        //mattun-end
 
         // directly execute callback function if all images are complete
     if (imgsComplete) { return cb(); }
