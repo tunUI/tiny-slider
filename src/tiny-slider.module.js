@@ -1763,11 +1763,25 @@ export var tns = function(options) {
           addEvents(img, imgEvents);
 
           // update src
-          img.src = getAttr(img, 'data-src');
+          var dataSrc = getAttr(img, 'data-src');
+          if (dataSrc) { img.src = dataSrc; }
 
-          // update srcset
-          var srcset = getAttr(img, 'data-srcset');
-          if (srcset) { img.srcset = srcset; }
+           // update srcset
+           var srcset = getAttr(img, 'data-srcset');
+           if (srcset) { img.srcset = srcset; }
+
+
+          var sources = img.parentNode.querySelectorAll('source');
+
+          if(sources != undefined) {
+            Array.prototype.slice.call(sources).forEach(source => {
+
+            // update srcset
+            var srcset = getAttr(source, 'data-srcset');
+            if (srcset) { source.srcset = srcset; }
+
+            });
+          }
 
           addClass(img, 'loading');
           }
