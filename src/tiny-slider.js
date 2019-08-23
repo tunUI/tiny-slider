@@ -1774,7 +1774,7 @@ export var tns = function(options) {
           var sources = img.parentNode.querySelectorAll('source');
 
           if(sources != undefined) {
-            Array.prototype.slice.call(sources).forEach(source => {
+            Array.prototype.slice.call(sources).forEach(function (source) {
 
             // update srcset
             var srcset = getAttr(source, 'data-srcset');
